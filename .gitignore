@@ -1,6 +1,6 @@
 *.pyc
 __pycache__
-/venv/
+venv/
 db.sqlite3
 logs/*
 media/*
@@ -17,3 +17,4 @@ local_settings.py
 *.rej
 *.save
 thumbs.db
+.env
