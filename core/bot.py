@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Обработчик команды /start для регистрации пользователей в боте."""
     user = update.message.from_user
     get_or_create_user = sync_to_async(TelegramUser.objects.get_or_create)
 
@@ -32,9 +33,11 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 async def send_reminder(context: ContextTypes.DEFAULT_TYPE, event: Event, chat_id: int):
+    """Отправляет напоминание о мероприятии в указанный чат."""
 
 
 def setup_bot() -> Application:
+    """Создает и настраивает экземпляр Telegram бота с обработчиками."""
     application = Application.builder().token(settings.TELEGRAM_BOT_TOKEN).build()
 
     application.add_handler(CommandHandler("start", start))

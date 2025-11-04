@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Event(models.Model):
+    """Модель для хранения информации о мероприятиях и дедлайнах."""
     protocol = models.CharField(verbose_name="Мероприятие (Протокол)")
     description = models.TextField(verbose_name="Описание", blank=True)
     responsible_person = models.CharField(verbose_name="Ответственный", max_length=255)
@@ -12,6 +13,7 @@ class Event(models.Model):
 
 
 class TelegramUser(models.Model):
+    """Модель для хранения пользователей Telegram и их прав доступа."""
     user_id = models.BigIntegerField(unique=True, verbose_name="ID пользователя")
     username = models.CharField(max_length=255, blank=True, verbose_name="Username")
     first_name = models.CharField(max_length=255, blank=True, verbose_name="Имя")

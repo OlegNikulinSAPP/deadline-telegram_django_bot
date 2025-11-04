@@ -7,7 +7,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 @staff_member_required
 def upload_excel(request):
-    """Страница загрузки Excel-файла с мероприятиями для администраторов."""
+    """Представление для загрузки и обработки Excel файлов с мероприятиями."""
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():

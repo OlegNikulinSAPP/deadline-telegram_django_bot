@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
+    """Django команда для запуска Telegram бота."""
     help = 'Запускает Telegram бота для напоминаний'
 
     def handle(self, *args, **options):
