@@ -1,0 +1,9 @@
+{% extends "admin/base.html" %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+{% block breadcrumbs %}
+{{ block.super }}
+    &rsaquo; <a href="{% url 'custom_admin:upload_excel' %}">Загрузить Excel</a>
+    {% endblock %}
+</div>
+{% endblock %}
