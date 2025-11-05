@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 
 class Event(models.Model):
@@ -7,6 +8,7 @@ class Event(models.Model):
     description = models.TextField(verbose_name="Описание", blank=True)
     responsible_person = models.CharField(verbose_name="Ответственный", max_length=255)
     deadline = models.DateTimeField(verbose_name="Дедлайн")
+    under_control = models.BooleanField(default=True, verbose_name="Под контролем")
 
     def __str__(self):
         return self.protocol
@@ -28,3 +30,17 @@ class TelegramUser(models.Model):
     def __str__(self):
         return f'{self.first_name} {self.last_name} (@{self.username})' if self.username \
             else f'{self.first_name} {self.last_name}'
+
+
+class BotSettings(models.Model):
+    daily_check_time = models.TimeField(default=datetime.time(hour=9, minute=0))
+    reminder_interval = models.IntegerField(default=5)
+
+    @classmethod
+    def load(cls):
+        obj, created = cls.objects.get_or_create(id=1)
+        return obj
+
+    def __str__(self):
+        return (f"Настройки бота (интервал: {self.reminder_interval} мин, "
+                f"проверка: {self.daily_check_time})")
