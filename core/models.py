@@ -38,6 +38,7 @@ class BotSettings(models.Model):
 
     @classmethod
     def load(cls):
+        """Загружает настройки бота (синхронная версия)."""
         obj, created = cls.objects.get_or_create(id=1)
         return obj
 
